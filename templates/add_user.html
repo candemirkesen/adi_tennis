@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content%}
+
+<!doctype html>
+<html>
+   {% with messages = get_flashed_messages() %}
+   {% if messages %}
+     <ul class="flashes">
+        {% for message in messages %}
+         <div class="message_flash">{{ message }}</div>
+        {% endfor %}
+    </ul>
+  {% endif %}
+ {% endwith %}
+   <body>
+      <h2 style = "text-align: center;">Sign Up</h2>
+		
+      {% for message in form.name.errors %}
+         <div>{{ message }}</div>
+      {% endfor %}
+      
+      {% for message in form.email.errors %}
+         <div>{{ message }}</div>
+      {% endfor %}
+      
+{% if name %}
+      <h1>Hello {{name}}!!</h1>
+      <br/>
+
+{% else %}
+   <form method = post>
+      <fieldset>
+         <legend>Sign Up Form</legend>
+         {{ form.hidden_tag() }}
+         
+         <div style = font-size:20px; font-weight:bold; margin-left:150px;>
+            {{ form.name.label }}<br>
+            {{ form.name }}
+            <br>
+            {{ form.email.label }}<br>
+            {{ form.email }}
+            <br>
+            {{ form.passw.label }}<br>
+            {{ form.passw }}
+            <br>
+            {{ form.submit(class="btn btn-primary") }}
+         </div>
+      </fieldset>
+   </form>
+
+   </body>
+</html>
+
+
+{% endif %}
+
+{% endblock %}

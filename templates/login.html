@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content%}
+
+<!doctype html>
+<html>
+   <body>
+      <h2 style = "text-align: center;">Sign in</h2>
+
+      <form method = post>
+         <fieldset>
+            {{ loginform.hidden_tag() }}
+            
+            <div style = font-size:20px; font-weight:bold; margin-left:150px;>
+
+               {{ loginform.email.label }}<br>
+               {{ loginform.email }}
+               <br>
+               {{ loginform.passw.label }}<br>
+               {{ loginform.passw }}
+               <br>
+               <br/>
+               {{ loginform.submit(class="btn btn-primary") }}
+            </div>
+         </fieldset>
+      </form>
+      <br><br>
+
+      <h3>Not a member?</h3>
+      <h3><a href = "{{url_for('add_user') }}">Register Here</a></h3>
+
+
+
+   </body>
+</html>
+
+
+{% endblock %}
