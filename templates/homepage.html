@@ -29,10 +29,10 @@
                 </tr>
               </thead>
               <tbody>
-                {% for i in range(n) %}
+                {% for p in players %}
                    <tr>
-                      <th scope="row">{{ dframe.Player[i] }}</th>
-                      <td> {{ dframe.Score[i] }} </td>
+                      <th scope="row">{{ p.player }}</th>
+                      <td> {{ p.score }} </td>
                    </tr>
                 {% endfor %}
               </tbody>
@@ -40,39 +40,51 @@
          </div>
 
                  <br>
-                 <h1>Champion is:</h1>
+                 <h4>Champion is:</h4>
                  <div class="shadow-sm p-3 mb-5 bg-body rounded">
                     <img src="{{ winner_path }}" alt="Winner" width="300" height="300">
+					<div>
+						Champion is {{ champion }}
+					</div>
                  </div>
       </center>
 	  
-	  <div class="container">
-		  <h2>Winner Selection</h2>
-		  <div class="dropdown">
-			<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select winner
-			<span class="caret"></span></button>
-			<ul class="dropdown-menu">
-			  <li><a href="#">Uraz</a></li>
-			  <li><a href="#">Can</a></li>
-			  <li><a href="#">Burak</a></li>
-			  <li><a href="#">Murat</a></li>
-			</ul>
-		  </div>
+		<div class="container">
+			<form method="post" action="/">
+				<div>
+					<h3>Winner</h3>
+					<select id="winner" name="winner">
+						<option value="Can">Can</option>
+						<option value="Uraz">Uraz</option>
+						<option value="Burak">Burak</option>
+						<option value="Murat">Murat</option>
+						<option value="Engin">Engin</option>
+						<option value="Alican">Alican</option>
+					</select>
+				</div>
+				<div>
+					<h3>Loser</h3>
+					<select id="loser" name="loser">
+						<option value="Can">Can</option>
+						<option value="Uraz">Uraz</option>
+						<option value="Burak">Burak</option>
+						<option value="Murat">Murat</option>
+						<option value="Engin">Engin</option>
+						<option value="Alican">Alican</option>
+					</select>
+				</div>
+				<div>
+					<h3>Send</h3>
+					<input type="submit" value="Submit">
+				</div>
+			</form> 
 		</div>
-		
-	  <div class="container">
-		  <h2>Loser Selection</h2>
-		  <div class="dropdown">
-			<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select loser
-			<span class="caret"></span></button>
-			<ul class="dropdown-menu">
-			  <li><a href="#">Uraz</a></li>
-			  <li><a href="#">Can</a></li>
-			  <li><a href="#">Burak</a></li>
-			  <li><a href="#">Murat</a></li>
-			</ul>
-		  </div>
-		</div>
+
+
+		<h3>Selected winner</h3>
+		{{ winner }}
+		<h3>Selected loser</h3>
+		{{ loser }}
 
 	</body>
 </html>
